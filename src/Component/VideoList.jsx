@@ -1,7 +1,7 @@
 import React from "react";
 import VideoCard from "./VideoCard";
 
-const VideoList = ({ videoData, editVideo }) => {
+const VideoList = ({ videoData, editVideo, deleteVideo }) => {
   return (
     <div
       style={{
@@ -13,7 +13,13 @@ const VideoList = ({ videoData, editVideo }) => {
     >
       {videoData.map((video, idx) => {
         return (
-          <VideoCard key={idx} video={video} editVideo={editVideo} id={idx} />
+          <VideoCard
+            key={idx}
+            video={video}
+            editVideo={editVideo}
+            id={idx}
+            deleteVideo={deleteVideo}
+          />
         );
       })}
     </div>
