@@ -4,8 +4,7 @@ import VideoList from "./VideoList";
 import AddVideo from "./AddVideo";
 import Dropdown from "./DropdownComp/Dropdown";
 import FilterSearch from "./FilteredList/FilterSearch";
-
-const Main = () => {
+const Main = ({ handleMode }) => {
   // reducer- that takes current state and returns new state on basis of action type
   const videoReducer = (videos, action) => {
     switch (action.type) {
@@ -40,6 +39,7 @@ const Main = () => {
   // after manipulation of current state by videoReducer new state will be returned in videos
   const [videos, dispatch] = useReducer(videoReducer, videoData);
   const [editableVideo, setEditableVideo] = useState(null);
+
   const addVideo = (video) => {
     // setvideos([
     //   ...videos,
@@ -73,7 +73,7 @@ const Main = () => {
     console.log("---dele---", id);
     dispatch({ type: "DELETE", payload: id });
   };
-  console.log("--edit vvv--", editableVideo);
+
   return (
     <>
       {/* passing function as prop- called lifting up state, means this function executes here and catches data from child component */}
@@ -82,6 +82,7 @@ const Main = () => {
         editableVideo={editableVideo}
         updateVideo={updateVideo}
       />
+      <button onClick={handleMode}>mode</button>
       <VideoList
         videoData={videos}
         editVideo={editVideo}

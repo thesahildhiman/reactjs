@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../Context/ThemeContext";
 const VideoCard = ({ video, editVideo, id, deleteVideo }) => {
   const handleEdit = () => {
     editVideo(id);
@@ -6,12 +7,24 @@ const VideoCard = ({ video, editVideo, id, deleteVideo }) => {
   const handleDelete = () => {
     deleteVideo(id);
   };
+
+  const darkMode = useContext(ThemeContext);
   return (
-    <div style={{ margin: "10px", border: "2px solid black" }}>
-      <button style={{ position: "absolute" }} onClick={handleEdit}>
+    <div
+      className={darkMode ? "dark" : "light"}
+      style={{
+        margin: "10px",
+      }}
+    >
+      <button
+        className={darkMode ? "dark" : "light"}
+        style={{ position: "absolute" }}
+        onClick={handleEdit}
+      >
         edit
       </button>
       <button
+        className={darkMode ? "dark" : "light"}
         style={{ position: "absolute", marginLeft: "40px" }}
         onClick={handleDelete}
       >
